@@ -1,0 +1,98 @@
+[
+  {
+    "label": "Connexion compte démo",
+    "method": "POST",
+    "url": "/api/auth/login",
+    "status": 200,
+    "authorization": "absent",
+    "response": "{\"token\":\"<JWT masqué>\",\"user\":{\"id\":\"6aabd7232805275733decbe7\",\"name\":\"Demo\",\"email\":\"demo@example.com\",\"createdAt\":\"2026-09-17T12:03:47.898Z\"}}"
+  },
+  {
+    "label": "Liste sans JWT",
+    "method": "GET",
+    "url": "/api/tracks?page=1&limit=5",
+    "status": 401,
+    "authorization": "absent",
+    "response": "{\"message\":\"Authentification requise\"}"
+  },
+  {
+    "label": "Liste avec JWT invalide",
+    "method": "GET",
+    "url": "/api/tracks?page=1&limit=5",
+    "status": 401,
+    "authorization": "Bearer <jeton invalide>",
+    "response": "{\"message\":\"Jeton invalide ou expiré\"}"
+  },
+  {
+    "label": "Upload sans fichier",
+    "method": "POST",
+    "url": "/api/tracks",
+    "status": 400,
+    "authorization": "Bearer <JWT masqué>",
+    "response": "{\"message\":\"Fichier audio requis\"}"
+  },
+  {
+    "label": "Upload type MIME refusé (audio/flac)",
+    "method": "POST",
+    "url": "/api/tracks",
+    "status": 400,
+    "authorization": "Bearer <JWT masqué>",
+    "response": "{\"message\":\"Format audio non accepté\"}"
+  },
+  {
+    "label": "Upload valide (piste de test)",
+    "method": "POST",
+    "url": "/api/tracks",
+    "status": 201,
+    "authorization": "Bearer <JWT masqué>",
+    "response": "{\"id\":\"6ad09af7c55f4c21bff13444\",\"ownerId\":\"6aabd7232805275733decbe7\",\"title\":\"Test propriétaire\",\"originalName\":\"test.mp3\",\"mimeType\":\"audio/mpeg\",\"size\":3605337,\"createdAt\":\"2026-10-15T09:20:55.596Z"
+  },
+  {
+    "label": "Lecture par le propriétaire",
+    "method": "GET",
+    "url": "/api/tracks/6ad09af7c55f4c21bff13444/audio",
+    "status": 200,
+    "authorization": "Bearer <JWT masqué>",
+    "response": "audio/mpeg (flux binaire envoyé par res.sendFile)"
+  },
+  {
+    "label": "Inscription d’un second utilisateur",
+    "method": "POST",
+    "url": "/api/auth/register",
+    "status": 201,
+    "authorization": "absent",
+    "response": "{\"token\":\"<JWT masqué>\",\"user\":{\"id\":\"6ad09af7c55f4c21bff13445\",\"name\":\"Audit TP\",\"email\":\"audit-tp-1792056055683@example.com\",\"createdAt\":\"2026-10-15T09:20:55.755Z\"}}"
+  },
+  {
+    "label": "Lecture de la piste du démo par un autre utilisateur",
+    "method": "GET",
+    "url": "/api/tracks/6ad09af7c55f4c21bff13444/audio",
+    "status": 404,
+    "authorization": "Bearer <JWT masqué>",
+    "response": "{\"message\":\"Piste inconnue\"}"
+  },
+  {
+    "label": "Suppression de la piste du démo par un autre utilisateur",
+    "method": "DELETE",
+    "url": "/api/tracks/6ad09af7c55f4c21bff13444",
+    "status": 404,
+    "authorization": "Bearer <JWT masqué>",
+    "response": "{\"message\":\"Piste inconnue\"}"
+  },
+  {
+    "label": "Suppression par le propriétaire",
+    "method": "DELETE",
+    "url": "/api/tracks/6ad09af7c55f4c21bff13444",
+    "status": 204,
+    "authorization": "Bearer <JWT masqué>",
+    "response": ", 0 octets"
+  },
+  {
+    "label": "Suppression d’une piste déjà supprimée",
+    "method": "DELETE",
+    "url": "/api/tracks/6ad09af7c55f4c21bff13444",
+    "status": 404,
+    "authorization": "Bearer <JWT masqué>",
+    "response": "{\"message\":\"Piste inconnue\"}"
+  }
+]

@@ -1,0 +1,94 @@
+<section>
+  <div class="hero">
+    <p class="eyebrow">MA BIBLIOTHÈQUE</p>
+    <h1>Backing tracks</h1>
+    <p>Importez, retrouvez et écoutez vos morceaux de travail.</p>
+  </div>
+
+  <div class="grid">
+    <article class="card">
+      <h2>Importer</h2>
+      <label>Titre<input [formControl]="title" /></label>
+      <label>Fichier audio<input #fileInput type="file" accept=".mp3,.wav,.ogg,.m4a,audio/mpeg,audio/wav,audio/ogg,audio/mp4,audio/x-m4a" (change)="choose($event)" [disabled]="uploading()" /></label>
+      
+      @if (uploadError()) {
+        <p class="error" role="alert">{{ uploadError() }}</p>
+      }
+      @if (uploadSuccess()) {
+        <p class="success" role="status">{{ uploadSuccess() }}</p>
+      }
+
+      <button type="button" (click)="upload()" [disabled]="!file || uploading()">
+        @if (uploading()) {
+          Envoi en cours...
+        } @else {
+          Envoyer
+        }
+      </button>
+    </article>
+
+    <article class="card">
+      <div class="row">
+        <h2>Mes pistes</h2>
+        <button type="button" (click)="load()">Actualiser</button>
+      </div>
+      @if (loading()) {
+        <p>Chargement…</p>
+      }
+      @if (error()) {
+        <p class="error" role="alert">{{ error() }}</p>
+      }
+
+      @if (ghostFile()) {
+        <div class="track card-track" style="opacity: 0.6; border: 1px dashed #ccc;">
+          <div class="track-info">
+            <b>{{ title.value || ghostFile()?.name }}</b>
+            <small>{{ ghostFile()?.name }}</small>
+            <small class="meta">Envoi en cours... ({{ uploadProgress() }}%)</small>
+            <progress [value]="uploadProgress()" max="100" style="width: 100%; margin-top: 4px;"></progress>
+          </div>
+        </div>
+      }
+
+      @for (track of tracks(); track track.id) {
+        <article class="track card-track" [attr.aria-label]="track.title">
+          <div class="track-info">
+            <b>{{ track.title }}</b>
+            <small>{{ track.originalName }}</small>
+            <small class="meta">{{ track.mimeType }} · {{ track.size / 1024 | number:'1.0-0' }} Ko · Ajouté le {{ track.createdAt | date:'dd/MM/yyyy' }}</small>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button type="button" (click)="play(track)" [attr.aria-label]="'Lire ' + track.title">▶</button>
+            <button type="button" (click)="delete(track)" [disabled]="deleting().has(track.id)" [attr.aria-label]="'Supprimer ' + track.title" style="background-color: #d32f2f; color: white;">
+              @if (deleting().has(track.id)) {
+                Suppression…
+              } @else {
+                Supprimer
+              }
+            </button>
+          </div>
+        </article>
+      } @empty {
+        <p>Aucune piste.</p>
+      }
+      <mat-paginator
+        [length]="total()"
+        [pageSize]="limit()"
+        [pageSizeOptions]="[5, 10, 20]"
+        [pageIndex]="page() - 1"
+        (page)="onPageChange($event)">
+      </mat-paginator>
+
+      @if (playError()) {
+        <p class="error" role="alert">{{ playError() }}</p>
+      }
+      
+      @if (audioUrl()) {
+        <div class="player">
+          <p>En cours de lecture : <b>{{ currentTrack()?.title }}</b></p>
+          <audio [src]="audioUrl()" controls autoplay (error)="onAudioError()"></audio>
+        </div>
+      }
+    </article>
+  </div>
+</section>

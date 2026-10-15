@@ -1,0 +1,26 @@
+[debug] [vite] connecting...
+[debug] [vite] connected.
+[error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+[error] [LoginPage] Échec de connexion 401
+[debug] [LoginPage] Connexion réussie
+[debug] [TracksPage] Pistes chargées 4
+[debug] [ProfilePage] Profil chargé 6aabd7232805275733decbe7
+[debug] [ProfilePage] Profil enregistré 6aabd7232805275733decbe7
+[debug] [ProfilePage] Profil enregistré 6aabd7232805275733decbe7
+[debug] [vite] connecting...
+[debug] [vite] connected.
+[debug] [ProfilePage] Profil chargé 6aabd7232805275733decbe7
+[debug] [TracksPage] Pistes chargées 4
+[debug] [TracksPage] Fichier valide song1.mp3
+[debug] [TracksPage] Piste envoyée 6ad09b83c55f4c21bff13448
+[debug] [TracksPage] Pistes chargées 5
+[debug] [TracksPage] Fichier valide song1.mp3
+[debug] [TracksPage] Piste envoyée 6ad09b83c55f4c21bff13449
+[debug] [TracksPage] Pistes chargées 5
+[debug] [TracksPage] Pistes chargées 1
+[debug] [TracksPage] Pistes chargées 5
+[debug] [TracksPage] Audio chargé 6ad09b83c55f4c21bff13449
+[debug] [TracksPage] Piste supprimée 6ad09b83c55f4c21bff13449
+[debug] [TracksPage] Pistes chargées 5
+[debug] [TracksPage] Piste supprimée 6ad09b83c55f4c21bff13448
+[debug] [TracksPage] Pistes chargées 4

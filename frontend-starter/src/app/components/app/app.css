@@ -1,0 +1,34 @@
+:host { display: block; min-height: 100vh; }
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem max(1.5rem, calc((100vw - 1180px) / 2));
+  background: #123d32;
+  color: #fff;
+}
+header > div { display: grid; }
+header b { font-size: 1.15rem; }
+header small { color: #c9e1d8; }
+nav { display: flex; align-items: center; flex-wrap: wrap; gap: 1.25rem; }
+nav a { color: #fff; font-weight: 600; }
+nav button.link {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+nav button.link:hover { background: none; text-decoration: underline; }
+main { max-width: 1180px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+
+@media (max-width: 600px) {
+  header { align-items: flex-start; flex-direction: column; }
+  main { padding: 1.5rem 1rem; }
+}

@@ -1,0 +1,202 @@
+[
+  {
+    "step": "TP1 connexion refusée",
+    "method": "POST",
+    "url": "/api/auth/login",
+    "status": 401,
+    "authorization": "absent",
+    "contentType": "application/json",
+    "body": "{\"email\":\"demo@example.com\",\"password\":\"***\"}",
+    "response": "{\"message\":\"Identifiants incorrects\"}"
+  },
+  {
+    "step": "TP1 connexion réussie",
+    "method": "POST",
+    "url": "/api/auth/login",
+    "status": 200,
+    "authorization": "absent",
+    "contentType": "application/json",
+    "body": "{\"email\":\"demo@example.com\",\"password\":\"***\"}",
+    "response": "{\"token\":\"<JWT masqué>\",\"user\":{\"id\":\"6aabd7232805275733decbe7\",\"name\":\"Demo\",\"email\":\"demo@example.com\",\"createdAt\":\"2026-09-17T12:03:47.898Z\"}}"
+  },
+  {
+    "step": "TP1 connexion réussie",
+    "method": "GET",
+    "url": "/api/tracks?page=1&limit=5",
+    "status": 200,
+    "authorization": "Bearer <JWT masqué>",
+    "contentType": "",
+    "body": "",
+    "response": "{\"items\":[{\"ownerId\":\"6aabd7232805275733decbe7\",\"title\":\"PARLU\",\"originalName\":\"PARLU.mp3\",\"mimeType\":\"audio/mpeg\",\"size\":3426562,\"artist\":\"La Rvfleuze\",\"album\":\"Numéro d'écrou\",\"genre\":\"Music\",\"year\":2026,\"duration\":141.32244897959183,\"bitrate\":192000,\"sampleRate\":44100,\"coverStoredName\":\"e6de99aa-…"
+  },
+  {
+    "step": "TP1 profil (GET /api/users/me)",
+    "method": "GET",
+    "url": "/api/users/me",
+    "status": 200,
+    "authorization": "Bearer <JWT masqué>",
+    "contentType": "",
+    "body": "",
+    "response": "{\"id\":\"6aabd7232805275733decbe7\",\"name\":\"Demo\",\"email\":\"demo@example.com\",\"createdAt\":\"2026-09-17T12:03:47.898Z\"}"
+  },
+  {
+    "step": "TP1 modification du nom (PUT /api/users/me)",
+    "method": "PUT",
+    "url": "/api/users/me",
+    "status": 200,
+    "authorization": "Bearer <JWT masqué>",
+    "contentType": "application/json",
+    "body": "{\"name\":\"Demo TP\"}",
+    "response": "{\"id\":\"6aabd7232805275733decbe7\",\"name\":\"Demo TP\",\"email\":\"demo@example.com\",\"createdAt\":\"2026-09-17T12:03:47.898Z\"}"
+  },
+  {
+    "step": "TP1 modification du nom (PUT /api/users/me)",
+    "method": "PUT",
+    "url": "/api/users/me",
+    "status": 200,
+    "authorization": "Bearer <JWT masqué>",
+    "contentType": "application/json",
+    "body": "{\"name\":\"Demo\"}",
+    "response": "{\"id\":\"6aabd7232805275733decbe7\",\"name\":\"Demo\",\"email\":\"demo@example.com\",\"createdAt\":\"2026-09-17T12:03:47.898Z\"}"
+  },
+  {
+    "step": "TP1 rechargement (F5) : currentUser restauré",
+    "method": "GET",
+    "url": "/api/users/me",
+    "status": 200,
+    "authorization": "Bearer <JWT masqué>",
+    "contentType": "",
+    "body": "",
+    "response": "{\"id\":\"6aabd7232805275733decbe7\",\"name\":\"Demo\",\"email\":\"demo@example.com\",\"createdAt\":\"2026-09-17T12:03:47.898Z\"}"
+  },
+  {
+    "step": "TP1 rechargement (F5) : currentUser restauré",
+    "method": "GET",
+    "url": "/api/users/me",
+    "status": 200,
+    "authorization": "Bearer <JWT masqué>",
+    "contentType": "",
+    "body": "",
+    "response": "{\"id\":\"6aabd7232805275733decbe7\",\"name\":\"Demo\",\"email\":\"demo@example.com\",\"createdAt\":\"2026-09-17T12:03:47.898Z\"}"
+  },
+  {
+    "step": "TP2 fichier refusé côté front",
+    "method": "GET",
+    "url": "/api/tracks?page=1&limit=5",
+    "status": 200,
+    "authorization": "Bearer <JWT masqué>",
+    "contentType": "",
+    "body": "",
+    "response": "{\"items\":[{\"ownerId\":\"6aabd7232805275733decbe7\",\"title\":\"PARLU\",\"originalName\":\"PARLU.mp3\",\"mimeType\":\"audio/mpeg\",\"size\":3426562,\"artist\":\"La Rvfleuze\",\"album\":\"Numéro d'écrou\",\"genre\":\"Music\",\"year\":2026,\"duration\":141.32244897959183,\"bitrate\":192000,\"sampleRate\":44100,\"coverStoredName\":\"e6de99aa-…"
+  },
+  {
+    "step": "TP3 upload avec progression",
+    "method": "POST",
+    "url": "/api/tracks",
+    "status": 201,
+    "authorization": "Bearer <JWT masqué>",
+    "contentType": "multipart/form-data; boundary=…",
+    "body": "",
+    "response": "{\"id\":\"6ad09b83c55f4c21bff13448\",\"ownerId\":\"6aabd7232805275733decbe7\",\"title\":\"Capture TP - piste 1\",\"originalName\":\"song1.mp3\",\"mimeType\":\"audio/mpeg\",\"size\":3605337,\"createdAt\":\"2026-10-15T09:23:15.188Z\"}"
+  },
+  {
+    "step": "TP3 upload avec progression",
+    "method": "GET",
+    "url": "/api/tracks?page=1&limit=5",
+    "status": 200,
+    "authorization": "Bearer <JWT masqué>",
+    "contentType": "",
+    "body": "",
+    "response": "{\"items\":[{\"ownerId\":\"6aabd7232805275733decbe7\",\"title\":\"Capture TP - piste 1\",\"originalName\":\"song1.mp3\",\"mimeType\":\"audio/mpeg\",\"size\":3605337,\"createdAt\":\"2026-10-15T09:23:15.188Z\",\"updatedAt\":\"2026-10-15T09:23:15.188Z\",\"__v\":0,\"id\":\"6ad09b83c55f4c21bff13448\"},{\"ownerId\":\"6aabd7232805275733decbe7…"
+  },
+  {
+    "step": "TP2 pagination page 2",
+    "method": "POST",
+    "url": "/api/tracks",
+    "status": 201,
+    "authorization": "Bearer <JWT masqué>",
+    "contentType": "multipart/form-data; boundary=…",
+    "body": "",
+    "response": "{\"id\":\"6ad09b83c55f4c21bff13449\",\"ownerId\":\"6aabd7232805275733decbe7\",\"title\":\"Capture TP - piste 2\",\"originalName\":\"song1.mp3\",\"mimeType\":\"audio/mpeg\",\"size\":3605337,\"createdAt\":\"2026-10-15T09:23:15.500Z\"}"
+  },
+  {
+    "step": "TP2 pagination page 2",
+    "method": "GET",
+    "url": "/api/tracks?page=1&limit=5",
+    "status": 200,
+    "authorization": "Bearer <JWT masqué>",
+    "contentType": "",
+    "body": "",
+    "response": "{\"items\":[{\"ownerId\":\"6aabd7232805275733decbe7\",\"title\":\"Capture TP - piste 2\",\"originalName\":\"song1.mp3\",\"mimeType\":\"audio/mpeg\",\"size\":3605337,\"createdAt\":\"2026-10-15T09:23:15.500Z\",\"updatedAt\":\"2026-10-15T09:23:15.500Z\",\"__v\":0,\"id\":\"6ad09b83c55f4c21bff13449\"},{\"ownerId\":\"6aabd7232805275733decbe7…"
+  },
+  {
+    "step": "TP2 pagination page 2",
+    "method": "GET",
+    "url": "/api/tracks?page=2&limit=5",
+    "status": 200,
+    "authorization": "Bearer <JWT masqué>",
+    "contentType": "",
+    "body": "",
+    "response": "{\"items\":[{\"ownerId\":\"6aabd7232805275733decbe7\",\"title\":\"Test YouTube Track\",\"originalName\":\"4feb7e82-c7b3-4782-8968-b5ccccd80bc1.mp3\",\"mimeType\":\"audio/mpeg\",\"size\":3605337,\"createdAt\":\"2026-10-14T14:26:43.540Z\",\"updatedAt\":\"2026-10-14T14:26:43.540Z\",\"__v\":0,\"id\":\"6acf9123deb2f868bd1ff004\"}],\"page\"…"
+  },
+  {
+    "step": "TP2 lecture audio authentifiée",
+    "method": "GET",
+    "url": "/api/tracks?page=1&limit=5",
+    "status": 200,
+    "authorization": "Bearer <JWT masqué>",
+    "contentType": "",
+    "body": "",
+    "response": "{\"items\":[{\"ownerId\":\"6aabd7232805275733decbe7\",\"title\":\"Capture TP - piste 2\",\"originalName\":\"song1.mp3\",\"mimeType\":\"audio/mpeg\",\"size\":3605337,\"createdAt\":\"2026-10-15T09:23:15.500Z\",\"updatedAt\":\"2026-10-15T09:23:15.500Z\",\"__v\":0,\"id\":\"6ad09b83c55f4c21bff13449\"},{\"ownerId\":\"6aabd7232805275733decbe7…"
+  },
+  {
+    "step": "TP2 lecture audio authentifiée",
+    "method": "GET",
+    "url": "/api/tracks/6ad09b83c55f4c21bff13449/audio",
+    "status": 200,
+    "authorization": "Bearer <JWT masqué>",
+    "contentType": "",
+    "body": "",
+    "response": "audio/mpeg, 3605337 octets"
+  },
+  {
+    "step": "TP3 suppression",
+    "method": "DELETE",
+    "url": "/api/tracks/6ad09b83c55f4c21bff13449",
+    "status": 204,
+    "authorization": "Bearer <JWT masqué>",
+    "contentType": "",
+    "body": "",
+    "response": ""
+  },
+  {
+    "step": "TP3 suppression",
+    "method": "GET",
+    "url": "/api/tracks?page=1&limit=5",
+    "status": 200,
+    "authorization": "Bearer <JWT masqué>",
+    "contentType": "",
+    "body": "",
+    "response": "{\"items\":[{\"ownerId\":\"6aabd7232805275733decbe7\",\"title\":\"Capture TP - piste 1\",\"originalName\":\"song1.mp3\",\"mimeType\":\"audio/mpeg\",\"size\":3605337,\"createdAt\":\"2026-10-15T09:23:15.188Z\",\"updatedAt\":\"2026-10-15T09:23:15.188Z\",\"__v\":0,\"id\":\"6ad09b83c55f4c21bff13448\"},{\"ownerId\":\"6aabd7232805275733decbe7…"
+  },
+  {
+    "step": "TP3 suppression",
+    "method": "DELETE",
+    "url": "/api/tracks/6ad09b83c55f4c21bff13448",
+    "status": 204,
+    "authorization": "Bearer <JWT masqué>",
+    "contentType": "",
+    "body": "",
+    "response": ""
+  },
+  {
+    "step": "TP3 suppression",
+    "method": "GET",
+    "url": "/api/tracks?page=1&limit=5",
+    "status": 200,
+    "authorization": "Bearer <JWT masqué>",
+    "contentType": "",
+    "body": "",
+    "response": "{\"items\":[{\"ownerId\":\"6aabd7232805275733decbe7\",\"title\":\"PARLU\",\"originalName\":\"PARLU.mp3\",\"mimeType\":\"audio/mpeg\",\"size\":3426562,\"artist\":\"La Rvfleuze\",\"album\":\"Numéro d'écrou\",\"genre\":\"Music\",\"year\":2026,\"duration\":141.32244897959183,\"bitrate\":192000,\"sampleRate\":44100,\"coverStoredName\":\"e6de99aa-…"
+  }
+]

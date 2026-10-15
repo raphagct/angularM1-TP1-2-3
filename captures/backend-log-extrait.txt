@@ -1,0 +1,40 @@
+[multer] Nom de stockage généré pour song1.mp3
+[tracks] Upload enregistré : 6ad09b83c55f4c21bff13449
+[http] POST /api/tracks -> 201 (30 ms)
+[auth] Token accepté pour 6aabd7232805275733decbe7
+[tracks] Lecture page=1, limit=5, user=6aabd7232805275733decbe7
+[tracks] 5 piste(s) envoyée(s) sur 6
+[http] GET /api/tracks?page=1&limit=5 -> 200 (22 ms)
+[auth] Token accepté pour 6aabd7232805275733decbe7
+[tracks] Lecture page=2, limit=5, user=6aabd7232805275733decbe7
+[tracks] 1 piste(s) envoyée(s) sur 6
+[http] GET /api/tracks?page=2&limit=5 -> 200 (19 ms)
+[auth] Token accepté pour 6aabd7232805275733decbe7
+[tracks] Lecture page=1, limit=5, user=6aabd7232805275733decbe7
+[tracks] 5 piste(s) envoyée(s) sur 6
+[http] GET /api/tracks?page=1&limit=5 -> 304 (19 ms)
+[auth] Token accepté pour 6aabd7232805275733decbe7
+[tracks] Audio envoyé : 6ad09b83c55f4c21bff13449
+[http] GET /api/tracks/6ad09b83c55f4c21bff13449/audio -> 200 (25 ms)
+[auth] Token accepté pour 6aabd7232805275733decbe7
+[tracks] Fichier supprimé : /Users/guichet/Documents/M1/web/angularM1-TP1-2-3/backend/data/uploads/2acad688-5fa5-436a-806d-a68f0ff7793b.mp3
+[http] DELETE /api/tracks/6ad09b83c55f4c21bff13449 -> 204 (27 ms)
+[auth] Token accepté pour 6aabd7232805275733decbe7
+[tracks] Lecture page=1, limit=5, user=6aabd7232805275733decbe7
+[tracks] 5 piste(s) envoyée(s) sur 5
+[http] GET /api/tracks?page=1&limit=5 -> 200 (19 ms)
+[auth] Token accepté pour 6aabd7232805275733decbe7
+[tracks] Fichier supprimé : /Users/guichet/Documents/M1/web/angularM1-TP1-2-3/backend/data/uploads/68ef9a56-c927-4a89-8caf-3dbcc2056705.mp3
+[http] DELETE /api/tracks/6ad09b83c55f4c21bff13448 -> 204 (26 ms)
+[auth] Token accepté pour 6aabd7232805275733decbe7
+[tracks] Lecture page=1, limit=5, user=6aabd7232805275733decbe7
+[tracks] 4 piste(s) envoyée(s) sur 4
+[http] GET /api/tracks?page=1&limit=5 -> 200 (23 ms)
+[auth] Tentative de connexion pour demo@example.com
+[auth] Connexion réussie : 6aabd7232805275733decbe7
+[auth] Création d'un token pour l'utilisateur 6aabd7232805275733decbe7
+[http] POST /api/auth/login -> 200 (148 ms)
+[auth] Token accepté pour 6aabd7232805275733decbe7
+[tracks] Lecture page=1, limit=20, user=6aabd7232805275733decbe7
+[tracks] 4 piste(s) envoyée(s) sur 4
+[http] GET /api/tracks?page=1&limit=20 -> 200 (19 ms)
