@@ -1,10 +1,10 @@
 # 🎸 Guitar Practice Cloud — Rendu TP1 · TP2 · TP3
 
-Portail **Angular 22** connecté à une API **Express 5 / Mongoose 9 / MongoDB Atlas** :
+Front **Angular 22** connecté à une API **Express 5 / Mongoose 9 / MongoDB Atlas** :
 comptes utilisateurs, profil, bibliothèque audio paginée, upload avec progression,
 lecture authentifiée et suppression de pistes.
 
-> **Auteurs :** Raphaël Guichet et Badr — M1, module Web / Angular
+> **Auteurs :** Raphaël Guichet et Badr Otarid — M1, module Web / Angular
 
 | | |
 |---|---|
